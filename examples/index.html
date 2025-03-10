@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhisperUI Multi-Bahasa</title>
+  </head>
+  <body>
+    <h1>WhisperUI Multi-Bahasa</h1>
+    <button id="start">Mulai Mendengarkan</button>
+    <button id="stop">Stop</button>
+
+    <select id="language">
+      <option value="id-ID">Bahasa Indonesia</option>
+      <option value="en-US">English (US)</option>
+      <option value="es-ES">Español</option>
+      <option value="fr-FR">Français</option>
+    </select>
+
+    <p id="result">Perintah terakhir: -</p>
+
+    <script src="../src/whisperui.js"></script>
+    <script>
+      const whisper = new WhisperUI();
+      const resultElement = document.getElementById("result");
+      const languageSelect = document.getElementById("language");
+
+      // Set bahasa sesuai yang tersimpan
+      languageSelect.value = localStorage.getItem("whisperUI_lang") || "id-ID";
+
+      whisper.addCommand("buka menu", () => {
+        alert("📂 Menu dibuka!");
+        resultElement.innerText = "Perintah terakhir: Buka menu";
+      });
+
+      whisper.addCommand("cari (.*)", (produk) => {
+        alert(`🔍 Mencari: ${produk}`);
+        resultElement.innerText = `Perintah terakhir: Cari ${produk}`;
+      });
+
+      document.getElementById("start").addEventListener("click", () => whisper.start());
+      document.getElementById("stop").addEventListener("click", () => whisper.stop());
+
+      languageSelect.addEventListener("change", (e) => {
+        whisper.setLanguage(e.target.value);
+        alert(`🌎 Bahasa diubah ke ${e.target.options[e.target.selectedIndex].text}`);
+      });
+    </script>
+  </body>
+</html>

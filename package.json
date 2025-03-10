@@ -1,0 +1,20 @@
+{
+  "name": "whisperui-opensource",
+  "version": "1.0.0",
+  "description": "Mengenali suara di konversi ke teks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anjastabuni/Whisperui-opensource.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anjastabuni/Whisperui-opensource/issues"
+  },
+  "homepage": "https://github.com/anjastabuni/Whisperui-opensource#readme"
+}
